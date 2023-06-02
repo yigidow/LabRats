@@ -10,6 +10,7 @@ namespace YY_Games_Scripts
         //Singleton
         public static GameManager instance;
 
+        [Header("Variables for Player Death")]
         public float waitAfterDied = 2f;
         public bool levelEnding;
         #endregion

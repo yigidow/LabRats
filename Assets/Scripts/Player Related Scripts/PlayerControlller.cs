@@ -52,6 +52,9 @@ namespace YY_Games_Scripts
         public bool canDash = true;
         private Vector3 dashDirection = Vector3.zero;
 
+        [Header("Variables for Bullet Time")]
+        private float originalTimeScale;
+
         [Header("Player animation variables")]
         public Animator animate;
 
@@ -64,12 +67,14 @@ namespace YY_Games_Scripts
         private void Awake()
         {
             instance = this;
-        }
+    }
         void Start()
         {
             currentGun--;
             SwitchGunNext();
             gunStartPos = gunHolder.localPosition;
+
+            originalTimeScale = Time.timeScale;
         }
 
         void Update()
@@ -140,7 +145,19 @@ namespace YY_Games_Scripts
                     StartCoroutine(DashDelay());
                     PlayerStamina.instance.DecreaseStaminaForDash();
                 }
-                
+
+                //Bullet Time
+
+                if(Input.GetKey(KeyCode.C) && PlayerBulletTime.instance.currentBulletTime > 0)
+                {
+                    PlayerBulletTime.instance.DecreaseBulletTime();
+                    EnterBulletTime();
+                }
+                else
+                {
+                    PlayerBulletTime.instance.IncreaseBulletTime();
+                    ExitBulletTime();
+                }
 
                 //Camera movement
 
@@ -361,6 +378,15 @@ namespace YY_Games_Scripts
         {
             yield return new WaitForSeconds(1.5f);
             canDash = true;
+        }
+
+        private void EnterBulletTime()
+        {
+            Time.timeScale = 0.5f;
+        }
+        private void ExitBulletTime()
+        {
+            Time.timeScale = originalTimeScale;
         }
         #endregion
     }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace YY_Games_Scripts
@@ -15,8 +13,8 @@ namespace YY_Games_Scripts
         public float currentStamina;
 
         [Header("Player Stamina Control Variables")]
-        public float staminaDecreaseRate = 2;
-        public float staminaIncreaseRate = 4;
+        public float staminaDecreaseRate = 2f;
+        public float staminaIncreaseRate = 4f;
         public float staminaCooldown = 2f;
         #endregion
 
@@ -30,7 +28,7 @@ namespace YY_Games_Scripts
                 currentStamina = 0;
             }
             UIController.instance.staminaBar.value = currentStamina;
-            staminaCooldown = 3f;
+            staminaCooldown = 2f;
         }
         public void DecreaseStaminaForRun()
         {
@@ -40,7 +38,7 @@ namespace YY_Games_Scripts
                 currentStamina = 0;
             }
             UIController.instance.staminaBar.value = currentStamina;
-            staminaCooldown = 3f;
+            staminaCooldown = 2f;
         }
 
         public void IncreaseStamina()
@@ -55,8 +53,6 @@ namespace YY_Games_Scripts
                 UIController.instance.staminaBar.value = currentStamina;
             }
         }
-
-
         #endregion
 
         #region Unity Functions

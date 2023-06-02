@@ -18,6 +18,9 @@ namespace YY_Games_Scripts
         public Slider staminaBar;
         public TextMeshProUGUI stamina;
 
+        [Header("Player Bullet Time UI")]
+        public Slider bulletTimeBar;
+
         [Header("Player Ammo UI")]
         public TextMeshProUGUI ammo;
 
