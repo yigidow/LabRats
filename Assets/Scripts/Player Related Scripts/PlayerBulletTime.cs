@@ -40,7 +40,6 @@ namespace YY_Games_Scripts
                 {
                     currentBulletTime = maxBulletTime;
                 }
-                Debug.Log("inc");
                 UIController.instance.bulletTimeBar.value = currentBulletTime;
             }
         }
