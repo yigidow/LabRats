@@ -14,6 +14,10 @@ namespace YY_Games_Scripts
         public Slider healthBar;
         public TextMeshProUGUI health;
 
+        [Header("Player Stamina UI")]
+        public Slider staminaBar;
+        public TextMeshProUGUI stamina;
+
         [Header("Player Ammo UI")]
         public TextMeshProUGUI ammo;
 

@@ -85,14 +85,15 @@ namespace YY_Games_Scripts
                 moveInput.Normalize();
 
                 //To Run
-
-                if (Input.GetKey(KeyCode.LeftShift))
+                if (Input.GetKey(KeyCode.LeftShift) && PlayerStamina.instance.currentStamina > 0)
                 {
                     moveInput *= runSpeed;
+                    PlayerStamina.instance.DecreaseStaminaForRun();
                 }
                 else
                 {
                     moveInput *= moveSpeed;
+                    PlayerStamina.instance.IncreaseStamina();         
                 }
 
                 //Gravity
@@ -132,13 +133,16 @@ namespace YY_Games_Scripts
 
                 //Dash Movement
 
-                if (Input.GetKeyDown(KeyCode.LeftControl) && canDash)
+                if (Input.GetKeyDown(KeyCode.LeftControl) && canDash && PlayerStamina.instance.currentStamina > 0)
                 {
                     Dash();
                     canDash = false;
                     StartCoroutine(DashDelay());
+                    PlayerStamina.instance.DecreaseStaminaForDash();
                 }
-                //camera movement
+                
+
+                //Camera movement
 
                 Vector2 mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * mouseSens;
 

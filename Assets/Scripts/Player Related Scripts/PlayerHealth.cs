@@ -60,7 +60,6 @@ namespace YY_Games_Scripts
             UIController.instance.health.text = "HEALTH:" + currentHealth + "/" + maxHealth;
         }
         #endregion
-
         #region Unity Functions
         private void Awake()
         {
