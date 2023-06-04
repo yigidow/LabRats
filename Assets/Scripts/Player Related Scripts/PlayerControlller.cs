@@ -10,13 +10,15 @@ namespace YY_Games_Scripts
         //Singleton
         public static PlayerControlller instance;
 
+        [Header("Player body and gravity")]
+        public CharacterController charCon;
+        public float gravityMod;
+
         [Header("Player movement variables")]
         public float moveSpeed;
         public float runSpeed;
-        public float gravityMod;
         public float jumpPow;
-        public CharacterController charCon;
-
+        
         [Header("Player movement input variables")]
         public float mouseSens;
         private bool invertX;
@@ -30,17 +32,29 @@ namespace YY_Games_Scripts
         [Header("Variables to jump and doublejump")]
         public Transform groundCheck;
         public LayerMask whatIsGround;
+        public bool ableToDoubleJump;
         private bool canJump, canDoubleJump;
 
-        [Header("Player firearms variables")]
+        [Header("Player weapon variables")]
         public Transform firePoint;
+        public Transform weaponHolder;
+        public Transform zoomPoint;
+        public float zoomSpeed = 2f;
+        private Vector3 weaponStartPos;
+
+        [Header("Player Gun variables")]
         public GunController myGun;
         public List<GunController> myGuns = new List<GunController>();
         public int currentGun;
         public List<GunController> unlockGuns = new List<GunController>();
-        public Transform zoomPoint, gunHolder;
-        private Vector3 gunStartPos;
-        public float zoomSpeed = 2f;
+
+        [Header("Player Bow variables")]
+        public BowController myBow;
+
+        [Header("Player class variables")]
+        public bool isGunMan = false;
+        public bool isBowMan = false;
+        public bool isSwordMan = false;
 
         [Header("Variables to make player bounce at pad")]
         private float bounceAmount;
@@ -70,10 +84,10 @@ namespace YY_Games_Scripts
     }
         void Start()
         {
-            currentGun--;
-            SwitchGunNext();
-            gunStartPos = gunHolder.localPosition;
+            //Setting the weapon position
+            weaponStartPos = weaponHolder.localPosition;
 
+            //Getting original GameTimeScale
             originalTimeScale = Time.timeScale;
         }
 
@@ -119,7 +133,7 @@ namespace YY_Games_Scripts
                     canDoubleJump = true;
                     AudioManager.instance.StopSfx(8);
                 }
-                else if (Input.GetKeyDown(KeyCode.Space) && canDoubleJump)
+                else if (Input.GetKeyDown(KeyCode.Space) && canDoubleJump && ableToDoubleJump)
                 {
                     moveInput.y = jumpPow;
                     canDoubleJump = false;
@@ -190,74 +204,136 @@ namespace YY_Games_Scripts
                 animate.SetBool("onGround", canJump);
 
 
-                //For Shooting
-
-                //Single Shots
-                if (Input.GetMouseButtonDown(0) && myGun.fireCounter <= 0)
+                //Zoom
+                if( isGunMan || isBowMan)
                 {
-                    RaycastHit hit;
-
-                    if (Physics.Raycast(camTrans.position, camTrans.forward, out hit, 50))
+                    if (Input.GetMouseButtonDown(1))
                     {
-                        if (Vector3.Distance(camTrans.position, hit.point) > 2)
+                        if (isGunMan)
                         {
-                            firePoint.LookAt(hit.point);
+                            CamController.instance.ZoomIn(myGun.zoomAmount);
                         }
+
+                        if (isBowMan)
+                        {
+                            CamController.instance.ZoomIn(myBow.zoomAmount);
+                        }
+                        weaponHolder.localPosition = Vector3.MoveTowards(weaponHolder.localPosition, weaponStartPos, zoomSpeed * Time.deltaTime);
+                    }
+
+                    if (Input.GetMouseButton(1))
+                    {
+                        weaponHolder.position = Vector3.MoveTowards(weaponHolder.position, zoomPoint.position, zoomSpeed * Time.deltaTime);
                     }
                     else
                     {
-                        firePoint.LookAt(camTrans.position + camTrans.forward * 50);
+                        weaponHolder.localPosition = Vector3.MoveTowards(weaponHolder.localPosition, weaponStartPos, zoomSpeed * Time.deltaTime);
                     }
-                    FireShot();
-
-                }
-
-                //swtich gun
-                if (Input.GetKeyDown(KeyCode.Tab))
-                {
-                    SwitchGunNext();
-                    CamController.instance.ZoomOut();
-                }
-                if (Input.mouseScrollDelta.y > 0)
-                {
-                    SwitchGunNext();
-                    CamController.instance.ZoomOut();
-                }
-
-                if (Input.mouseScrollDelta.y < 0)
-                {
-                    SwitchGunPrev();
-                    CamController.instance.ZoomOut();
-                }
-
-                //Zoom
-                if (Input.GetMouseButtonDown(1))
-                {
-                    CamController.instance.ZoomIn(myGun.zoomAmount);
-                    gunHolder.localPosition = Vector3.MoveTowards(gunHolder.localPosition, gunStartPos, zoomSpeed * Time.deltaTime);
-                }
-
-                if (Input.GetMouseButton(1))
-                {
-                    gunHolder.position = Vector3.MoveTowards(gunHolder.position, zoomPoint.position, zoomSpeed * Time.deltaTime);
-                }
-                else
-                {
-                    gunHolder.localPosition = Vector3.MoveTowards(gunHolder.localPosition, gunStartPos, zoomSpeed * Time.deltaTime);
-                }
-                if (Input.GetMouseButtonUp(1))
-                {
-                    CamController.instance.ZoomOut();
-                }
-
-                //Repeating Shots
-                if (Input.GetMouseButton(0) && myGun.canAutoFire)
-                {
-                    if (myGun.fireCounter <= 0)
+                    if (Input.GetMouseButtonUp(1))
                     {
-                        FireShot();
+                        CamController.instance.ZoomOut();
                     }
                 }
+                #region GunMan
+                //For Shooting
+
+                //Single Shots
+                if (isGunMan)
+                {
+                    if (Input.GetMouseButtonDown(0) && myGun.fireCounter <= 0)
+                    {
+                        RaycastHit hit;
+
+                        if (Physics.Raycast(camTrans.position, camTrans.forward, out hit, 50))
+                        {
+                            if (Vector3.Distance(camTrans.position, hit.point) > 2)
+                            {
+                                firePoint.LookAt(hit.point);
+                            }
+                        }
+                        else
+                        {
+                            firePoint.LookAt(camTrans.position + camTrans.forward * 50);
+                        }
+                        FireShot();
+
+                    }
+
+                    //Repeating Shots
+                    if (Input.GetMouseButton(0) && myGun.canAutoFire)
+                    {
+                        if (myGun.fireCounter <= 0)
+                        {
+                            FireShot();
+                        }
+                    }
+
+                    //Swtich gun
+                    if (Input.GetKeyDown(KeyCode.Tab))
+                    {
+                        SwitchGunNext();
+                        CamController.instance.ZoomOut();
+                    }
+                    if (Input.mouseScrollDelta.y > 0 && isGunMan)
+                    {
+                        SwitchGunNext();
+                        CamController.instance.ZoomOut();
+                    }
+
+                    if (Input.mouseScrollDelta.y < 0 && isGunMan)
+                    {
+                        SwitchGunPrev();
+                        CamController.instance.ZoomOut();
+                    }
+                }
+
+                #endregion
+                #region BowMan
+                if (isBowMan)
+                {
+                    if (Input.GetMouseButtonDown(0) && myBow.fireCounter <= 0)
+                    {
+                        RaycastHit hit;
+
+                        if (Physics.Raycast(camTrans.position, camTrans.forward, out hit, 50))
+                        {
+                            if (Vector3.Distance(camTrans.position, hit.point) > 2)
+                            {
+                                firePoint.LookAt(hit.point);
+                            }
+                        }
+                        else
+                        {
+                            firePoint.LookAt(camTrans.position + camTrans.forward * 50);
+                        }
+                        NockArrow();
+                        myBow.nockedArrow.transform.position = firePoint.position;
+                    }
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        LoseArrow();
+                    }
+                }
+                #endregion
+            }
+        }
+        #endregion
+        #region Functions to Set Class Weapon
+        public void SetClassWeapon()
+        {
+            if (isGunMan)
+            {
+                myGun.gameObject.SetActive(true);
+
+                firePoint = myGun.firePoint;
+                firePoint.position = myGun.firePoint.position;
+            }
+            if (isBowMan)
+            {
+                myBow.gameObject.SetActive(true);
+
+                firePoint = myBow.firePoint;
+                firePoint.position = myBow.firePoint.position;
             }
         }
         #endregion
@@ -269,10 +345,10 @@ namespace YY_Games_Scripts
                 myGun.ammoCount--;
                 Instantiate(myGun.bullet, firePoint.position, firePoint.rotation);
                 myGun.fireCounter = myGun.fireRate;
+
                 UIController.instance.ammo.text = "AMMO:" + myGun.ammoCount;
             }
         }
-
         public void SwitchGunNext()
         {
             myGun.gameObject.SetActive(false);
@@ -285,9 +361,10 @@ namespace YY_Games_Scripts
             myGun = myGuns[currentGun];
             myGun.gameObject.SetActive(true);
 
-            UIController.instance.ammo.text = "AMMO:" + myGun.ammoCount;
-
+            firePoint = myGun.firePoint;
             firePoint.position = myGun.firePoint.position;
+
+            UIController.instance.ammo.text = "AMMO:" + myGun.ammoCount;
         }
         public void SwitchGunPrev()
         {
@@ -300,10 +377,11 @@ namespace YY_Games_Scripts
             }
             myGun = myGuns[currentGun];
             myGun.gameObject.SetActive(true);
+     
+            firePoint = myGun.firePoint;
+            firePoint.position = myGun.firePoint.position;
 
             UIController.instance.ammo.text = "AMMO:" + myGun.ammoCount;
-
-            firePoint.position = myGun.firePoint.position;
         }
 
         public void UnlockGun(string gunName)
@@ -338,6 +416,24 @@ namespace YY_Games_Scripts
             }
         }
         #endregion
+        #region Function to Nock and Lose Arrows
+        public void NockArrow()
+        {
+            if(myBow.nockedArrow == null)
+            {
+                myBow.nockedArrow = Instantiate(myBow.arrow, firePoint.position, firePoint.rotation);
+            }
+            myBow.fireCounter = myBow.fireRate;
+        }
+        public void LoseArrow()
+        {
+            if(myBow.nockedArrow != null)
+            {
+                myBow.nockedArrow.GetComponent<BulletController>().isLose = true;
+            }
+            myBow.nockedArrow = null;
+        }
+        #endregion
         #region Function to additional movement
         public void Bounce(float bounceForce)
         {
@@ -360,7 +456,6 @@ namespace YY_Games_Scripts
 
             StartCoroutine(DashMovement());
         }
-
         private IEnumerator DashMovement()
         {
             float elapsedTime = 0f;
@@ -379,7 +474,6 @@ namespace YY_Games_Scripts
             yield return new WaitForSeconds(1.5f);
             canDash = true;
         }
-
         private void EnterBulletTime()
         {
             Time.timeScale = 0.5f;

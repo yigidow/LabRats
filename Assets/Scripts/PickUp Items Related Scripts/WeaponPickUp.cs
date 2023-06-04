@@ -14,7 +14,6 @@ namespace YY_Games_Scripts
                 PlayerControlller.instance.UnlockGun(gunName);
                 collected = true;
                 Destroy(gameObject);
-
                 AudioManager.instance.PlaySfx(4);
             }
         }

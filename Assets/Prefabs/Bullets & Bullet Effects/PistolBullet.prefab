@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9095017390996604403}
   - component: {fileID: 9095017390996604400}
   - component: {fileID: 5282334760326031175}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: PistolBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,6 +152,7 @@ MonoBehaviour:
   impactEffect: {fileID: 8745158360683153632, guid: 0d27f61bf97219b4baf7374f6d4d8524, type: 3}
   myRigidbody: {fileID: 9095017390996604403}
   damage: 2
+  isArrow: 0
   damageEnemy: 1
   damagePlayer: 0
 --- !u!82 &5282334760326031175

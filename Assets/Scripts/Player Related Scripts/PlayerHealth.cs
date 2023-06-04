@@ -59,20 +59,21 @@ namespace YY_Games_Scripts
             UIController.instance.healthBar.value = currentHealth;
             UIController.instance.health.text = "HEALTH:" + currentHealth + "/" + maxHealth;
         }
+
+        public void SetHealthValues()
+        {
+            currentHealth = maxHealth;
+            UIController.instance.healthBar.value = currentHealth;
+            UIController.instance.healthBar.maxValue = maxHealth;
+            UIController.instance.health.text = "HEALTH:" + currentHealth + "/" + maxHealth;
+            UIController.instance.healthPanel.SetActive(true);
+        }
         #endregion
         #region Unity Functions
         private void Awake()
         {
             instance = this;
         }
-        void Start()
-        {
-            currentHealth = maxHealth;
-            UIController.instance.healthBar.maxValue = maxHealth;
-            UIController.instance.health.text = "HEALTH:" + currentHealth + "/" + maxHealth;
-        }
-
-        // Update is called once per frame
         void Update()
         {
             if (invisCount > 0)

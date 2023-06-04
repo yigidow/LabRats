@@ -10,18 +10,32 @@ namespace YY_Games_Scripts
         public float lifeTime;
         public GameObject impactEffect;
         public Rigidbody myRigidbody;
-
         public int damage = 2;
 
+        [Header("Variables for Different Arrows")]
+        public bool isArrow;
+        public bool isLose;
+
+        [Header("Variables for Damage Types")]
         public bool damageEnemy;
         public bool damagePlayer;
         #endregion
         #region Unity Functions
         void Update()
         {
-            myRigidbody.velocity = transform.forward * bulletSpeed;
-            lifeTime -= Time.deltaTime;
+            if (!isArrow) 
+            {
+                MoveBullet();
+            }
+            else
+            {
+                if (isLose)
+                {
+                    MoveBullet();
+                }
+            }
 
+            lifeTime -= Time.deltaTime;
             if (lifeTime <= 0)
             {
                 Destroy(gameObject);
@@ -45,6 +59,13 @@ namespace YY_Games_Scripts
             }
             Destroy(gameObject);
             Instantiate(impactEffect, transform.position + transform.forward * -bulletSpeed * Time.deltaTime, transform.rotation);
+        }
+        #endregion
+
+        #region Function to move the bullet
+        public void MoveBullet()
+        {
+            myRigidbody.velocity = transform.forward * bulletSpeed;
         }
         #endregion
     }

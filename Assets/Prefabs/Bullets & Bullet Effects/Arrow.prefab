@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6797024180150404413}
   - component: {fileID: 3860089143501249498}
   - component: {fileID: 1748109663061191715}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4640124450753250340}
   - component: {fileID: 3346974357046961015}
   - component: {fileID: 2307795820236585316}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,10 +180,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 50
-  lifeTime: 5
+  lifeTime: 25
   impactEffect: {fileID: 8745158360683153632, guid: 0d27f61bf97219b4baf7374f6d4d8524, type: 3}
   myRigidbody: {fileID: 4640124450753250340}
   damage: 1
+  isArrow: 1
   damageEnemy: 1
   damagePlayer: 0
 --- !u!82 &2307795820236585316

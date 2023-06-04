@@ -43,6 +43,17 @@ namespace YY_Games_Scripts
                 UIController.instance.bulletTimeBar.value = currentBulletTime;
             }
         }
+
+        public void SetBulletTimeValues()
+        {
+            currentBulletTime = maxBulletTime;
+            if(maxBulletTime > 0)
+            {
+                UIController.instance.bulletTimeBar.value = currentBulletTime;
+                UIController.instance.bulletTimeBar.maxValue = maxBulletTime;
+                UIController.instance.bulletTinePanel.SetActive(true);
+            }
+        }
         #endregion
 
         #region Unity Functions

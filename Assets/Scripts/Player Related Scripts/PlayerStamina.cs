@@ -53,17 +53,19 @@ namespace YY_Games_Scripts
                 UIController.instance.staminaBar.value = currentStamina;
             }
         }
+        public void SetStaminaValues()
+        {
+            currentStamina = maxStamina;
+            UIController.instance.staminaBar.value = currentStamina;
+            UIController.instance.staminaBar.maxValue = maxStamina;
+            UIController.instance.staminaPanel.SetActive(true);
+        }
         #endregion
 
         #region Unity Functions
         private void Awake()
         {
             instance = this;
-        }
-        void Start()
-        {
-            currentStamina = maxStamina;
-            UIController.instance.staminaBar.maxValue = maxStamina;
         }
         private void Update()
         {

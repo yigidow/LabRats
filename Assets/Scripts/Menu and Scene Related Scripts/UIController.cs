@@ -11,17 +11,21 @@ namespace YY_Games_Scripts
         public static UIController instance;
 
         [Header("Player Health UI")]
+        public GameObject healthPanel;
         public Slider healthBar;
         public TextMeshProUGUI health;
 
         [Header("Player Stamina UI")]
+        public GameObject staminaPanel;
         public Slider staminaBar;
-        public TextMeshProUGUI stamina;
+        //public TextMeshProUGUI stamina;
 
         [Header("Player Bullet Time UI")]
+        public GameObject bulletTinePanel;
         public Slider bulletTimeBar;
 
         [Header("Player Ammo UI")]
+        public GameObject ammoPanel;
         public TextMeshProUGUI ammo;
 
         [Header("Player Damage Effects")]

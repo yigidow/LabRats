@@ -11,6 +11,9 @@ namespace YY_Games_Scripts
         public Transform firePoint;
 
         public bool canAutoFire;
+        public bool isBow;
+        public bool isMelee;
+
         public float fireRate;
 
         public int ammoCount, ammoPickAmount;
