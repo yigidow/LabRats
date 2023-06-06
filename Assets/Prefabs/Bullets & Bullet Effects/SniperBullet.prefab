@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2023074892463770814}
   m_Layer: 6
   m_Name: SniperBullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,6 +153,7 @@ MonoBehaviour:
   myRigidbody: {fileID: 9095017390996604403}
   damage: 3
   isArrow: 0
+  isLose: 0
   damageEnemy: 1
   damagePlayer: 0
 --- !u!82 &2023074892463770814

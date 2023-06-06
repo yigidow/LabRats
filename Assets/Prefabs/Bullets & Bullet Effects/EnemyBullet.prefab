@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4014776515532325055}
   m_Layer: 6
   m_Name: EnemyBullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,6 +153,7 @@ MonoBehaviour:
   myRigidbody: {fileID: 9095017390996604403}
   damage: 1
   isArrow: 0
+  isLose: 0
   damageEnemy: 0
   damagePlayer: 1
 --- !u!82 &4014776515532325055

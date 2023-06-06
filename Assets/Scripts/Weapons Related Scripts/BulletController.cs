@@ -57,6 +57,11 @@ namespace YY_Games_Scripts
             {
                 PlayerHealth.instance.DamagePayer(damage);
             }
+            if (other.gameObject.tag == "Player" && damageEnemy)
+            {
+                return;
+            }
+
             Destroy(gameObject);
             Instantiate(impactEffect, transform.position + transform.forward * -bulletSpeed * Time.deltaTime, transform.rotation);
         }

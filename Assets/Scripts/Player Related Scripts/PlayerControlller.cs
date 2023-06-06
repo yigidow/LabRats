@@ -28,7 +28,7 @@ namespace YY_Games_Scripts
 
         [Header("Player camera variables")]
         public Transform camTrans;
-        public float maxViewAng = 60f;
+        public float maxViewAng = 70f;
 
         [Header("Variables to jump and doublejump")]
         public Transform groundCheck;
@@ -187,6 +187,7 @@ namespace YY_Games_Scripts
                 {
                     mouseInput.x = -mouseInput.x;
                 }
+                if (invertY)
                 if (invertY)
                 {
                     mouseInput.y = -mouseInput.y;
@@ -361,8 +362,8 @@ namespace YY_Games_Scripts
             {
                 myBow.gameObject.SetActive(true);
 
-                firePoint = myBow.firePoint;
-                firePoint.position = myBow.firePoint.position;
+                firePoint = myBow.nockPoint;
+                firePoint.position = myBow.nockPoint.position;
             }
             if (isSwordMan)
             {
@@ -458,6 +459,7 @@ namespace YY_Games_Scripts
             if(myBow.nockedArrow == null)
             {
                 myBow.nockedArrow = Instantiate(myBow.arrow, firePoint.position, firePoint.rotation);
+                myBow.isArrowNocked = true;
             }
             myBow.fireCounter = myBow.fireRate;
         }
@@ -467,6 +469,7 @@ namespace YY_Games_Scripts
             {
                 myBow.nockedArrow.GetComponent<BulletController>().isLose = true;
             }
+            myBow.isArrowNocked = false;
             myBow.nockedArrow = null;
         }
         #endregion

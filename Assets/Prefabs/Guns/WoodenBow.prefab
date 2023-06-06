@@ -451,6 +451,37 @@ Transform:
   m_Father: {fileID: 6047049988052224328}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5390621184865519247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5354982150310598591}
+  m_Layer: 0
+  m_Name: LosePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5354982150310598591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5390621184865519247}
+  m_LocalRotation: {x: -0.06644606, y: -0.019061763, z: -0.014655303, w: -0.99750024}
+  m_LocalPosition: {x: -1.3637, y: -0.009, z: -0.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7849431925459363527}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: -1.13, y: 2.28, z: -0.55}
 --- !u!1 &5398336265039098068
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,12 +507,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5398336265039098068}
   m_LocalRotation: {x: -0.067403816, y: -0.019190455, z: -0.014645419, w: 0.9974337}
-  m_LocalPosition: {x: 1.34, y: 0.02, z: 1}
+  m_LocalPosition: {x: 1.34, y: 0.02, z: 1.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2064868316931207381}
   - {fileID: 1467038122166371981}
+  - {fileID: 5354982150310598591}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -7.76, y: -2.1, z: -1.54}
@@ -499,7 +531,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrow: {fileID: 7164315563285498034, guid: 95ff1cd6e0ced9d4aa19d1824fc6e44a, type: 3}
   nockedArrow: {fileID: 0}
-  firePoint: {fileID: 1467038122166371981}
+  isArrowNocked: 0
+  nockPoint: {fileID: 1467038122166371981}
+  losePoint: {fileID: 5354982150310598591}
   fireRate: 1
   zoomAmount: 20
   weaponName: Bow
@@ -806,7 +840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1467038122166371981}
   m_Layer: 0
-  m_Name: 'FirePoint '
+  m_Name: 'NockPoint '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -819,14 +853,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8049509709911106431}
-  m_LocalRotation: {x: 0.08419967, y: -0, z: -0, w: 0.99644893}
-  m_LocalPosition: {x: -0.9509994, y: -0.045, z: -0.089}
+  m_LocalRotation: {x: -0.06644606, y: -0.019061763, z: -0.014655303, w: -0.99750024}
+  m_LocalPosition: {x: -1.355, y: -0.037, z: -0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7849431925459363527}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.13, y: 2.28, z: -0.55}
 --- !u!1 &8898135269561268417
 GameObject:
   m_ObjectHideFlags: 0

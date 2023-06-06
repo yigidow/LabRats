@@ -5174,7 +5174,7 @@ GameObject:
   - component: {fileID: 6013775072706595011}
   m_Layer: 6
   m_Name: Rocket
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5262,6 +5262,7 @@ MonoBehaviour:
   myRigidbody: {fileID: 6013775072706595008}
   damage: 10
   isArrow: 0
+  isLose: 0
   damageEnemy: 1
   damagePlayer: 0
 --- !u!1 &6387702881978960754
