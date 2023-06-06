@@ -11575,7 +11575,7 @@ MonoBehaviour:
   weaponHolder: {fileID: 1704710944}
   zoomPoint: {fileID: 363530865}
   zoomSpeed: 2
-  myGun: {fileID: 1134230337}
+  myGun: {fileID: 142443290}
   myGuns: []
   currentGun: 0
   unlockGuns:
@@ -11998,17 +11998,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7594611215719530688, guid: cb46da19e9380034faa5960b137915f1, type: 3}
   m_PrefabInstance: {fileID: 857149013}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1134230337 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7594611215719530689, guid: cb46da19e9380034faa5960b137915f1, type: 3}
-  m_PrefabInstance: {fileID: 857149013}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d467914187a4e1043b9bc17648eca0d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1144820606
 GameObject:
   m_ObjectHideFlags: 0
