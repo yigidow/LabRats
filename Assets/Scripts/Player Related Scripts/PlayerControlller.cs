@@ -381,7 +381,7 @@ namespace YY_Games_Scripts
                 myGun.ammoCount--;
                 Instantiate(myGun.bullet, firePoint.position, firePoint.rotation);
                 myGun.fireCounter = myGun.fireRate;
-
+                myGun.gunAnimation.Play();
                 UIController.instance.ammo.text = "AMMO:" + myGun.ammoCount;
             }
         }

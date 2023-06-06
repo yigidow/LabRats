@@ -9,18 +9,13 @@ namespace YY_Games_Scripts
         public GameObject bullet;
 
         public Transform firePoint;
-
         public bool canAutoFire;
-        public bool isBow;
-        public bool isMelee;
-
         public float fireRate;
-
         public int ammoCount, ammoPickAmount;
-
         public float zoomAmount;
-
         public string gunName;
+
+        public Animation gunAnimation;
 
         [HideInInspector] public double fireCounter;
         #endregion

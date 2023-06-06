@@ -97,6 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7594611215719530688}
   - component: {fileID: 7594611215719530689}
+  - component: {fileID: 4355272151456304738}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -112,7 +113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7594611215719530695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.41, y: -0.261, z: 0.663}
+  m_LocalPosition: {x: 0.4, y: -0.3, z: 0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -136,14 +137,29 @@ MonoBehaviour:
   bullet: {fileID: 9095017390996604405, guid: bfee8131343cf8d488d2c9692f857fcb, type: 3}
   firePoint: {fileID: 7594611216171683529}
   canAutoFire: 0
-  isBow: 0
-  isMelee: 0
   fireRate: 0.8
   ammoCount: 10
   ammoPickAmount: 10
   zoomAmount: 50
   gunName: Pistol
+  shootAnim: {fileID: 7400000, guid: 30a6bd86ca8a8104ebf070fff5e8f369, type: 2}
+  gunAnimation: {fileID: 4355272151456304738}
   fireCounter: 0
+--- !u!111 &4355272151456304738
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7594611215719530695}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 30a6bd86ca8a8104ebf070fff5e8f369, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &7594611216171683528
 GameObject:
   m_ObjectHideFlags: 0

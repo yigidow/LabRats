@@ -159,6 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7491018454016917124}
   - component: {fileID: 7491018454016917123}
+  - component: {fileID: 2793173412966563027}
   m_Layer: 0
   m_Name: Repeater
   m_TagString: Untagged
@@ -203,4 +204,21 @@ MonoBehaviour:
   ammoPickAmount: 50
   zoomAmount: 40
   gunName: Repeater
+  gunAnimation: {fileID: 2793173412966563027}
   fireCounter: 0
+--- !u!111 &2793173412966563027
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7491018454016917125}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 30a6bd86ca8a8104ebf070fff5e8f369, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 30a6bd86ca8a8104ebf070fff5e8f369, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
