@@ -119,7 +119,7 @@ Transform:
   - {fileID: 7698469825826574288}
   - {fileID: 7594611216171683529}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7594611215719530689
 MonoBehaviour:
@@ -136,6 +136,8 @@ MonoBehaviour:
   bullet: {fileID: 9095017390996604405, guid: bfee8131343cf8d488d2c9692f857fcb, type: 3}
   firePoint: {fileID: 7594611216171683529}
   canAutoFire: 0
+  isBow: 0
+  isMelee: 0
   fireRate: 0.8
   ammoCount: 10
   ammoPickAmount: 10

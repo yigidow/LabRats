@@ -9812,7 +9812,7 @@ GameObject:
   m_Component:
   - component: {fileID: 707888145}
   m_Layer: 0
-  m_Name: CamPoint / GunPoint
+  m_Name: CamPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12016,7 +12016,6 @@ GameObject:
   - component: {fileID: 1147445650}
   - component: {fileID: 1147445649}
   - component: {fileID: 1147445652}
-  - component: {fileID: 1147445653}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -12114,18 +12113,6 @@ MonoBehaviour:
   target: {fileID: 707888145}
   zoomSpeed: 5
   myCam: {fileID: 1147445650}
---- !u!114 &1147445653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1147445648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1153229415
 PrefabInstance:
   m_ObjectHideFlags: 0

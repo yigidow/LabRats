@@ -18,6 +18,7 @@ namespace YY_Games_Scripts
         public float moveSpeed;
         public float runSpeed;
         public float jumpPow;
+        private bool isRunning;
         
         [Header("Player movement input variables")]
         public float mouseSens;
@@ -111,11 +112,13 @@ namespace YY_Games_Scripts
                 {
                     moveInput *= runSpeed;
                     PlayerStamina.instance.DecreaseStaminaForRun();
+                    isRunning = true;
                 }
                 else
                 {
                     moveInput *= moveSpeed;
-                    PlayerStamina.instance.IncreaseStamina();         
+                    PlayerStamina.instance.IncreaseStamina();
+                    isRunning = false;
                 }
 
                 //Gravity
@@ -200,12 +203,6 @@ namespace YY_Games_Scripts
                 {
                     camTrans.rotation = Quaternion.Euler(-maxViewAng, camTrans.rotation.eulerAngles.y, camTrans.rotation.eulerAngles.z);
                 }
-
-                //For animation
-
-                animate.SetFloat("MovSpeed", moveInput.magnitude);
-                animate.SetBool("onGround", canJump);
-
 
                 //Zoom
                 if( isGunMan || isBowMan)
@@ -317,7 +314,6 @@ namespace YY_Games_Scripts
                     }
                 }
                 #endregion
-
                 #region SwordMan
                 if (isSwordMan)
                 {
@@ -340,6 +336,14 @@ namespace YY_Games_Scripts
                     }
                 }
                 #endregion
+
+
+                //For animation
+    
+                animate.SetFloat("MovSpeed", moveInput.magnitude);
+                animate.SetBool("isRunning", isRunning);
+                animate.SetBool("onGround", canJump);
+
             }
         }
         #endregion

@@ -123,8 +123,8 @@ namespace YY_Games_Scripts
             PlayerBulletTime.instance.SetBulletTimeValues();
 
             //Movement Speed & Run Speed
-            PlayerControlller.instance.moveSpeed = 15f;
-            PlayerControlller.instance.runSpeed = 20f;
+            PlayerControlller.instance.moveSpeed = 12f;
+            PlayerControlller.instance.runSpeed = 18f;
 
             //Jump Power
             PlayerControlller.instance.jumpPow = 12;
