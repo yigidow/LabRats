@@ -14,16 +14,11 @@ namespace YY_Games_Scripts
         public float fireRate;
         public float zoomAmount;
 
-        public string gunName;
+        public string weaponName;
 
         [HideInInspector] public double fireCounter;
         #endregion
         #region Unity Functions
-        void Start()
-        {
-
-        }
-
         void Update()
         {
             if (fireCounter > 0)

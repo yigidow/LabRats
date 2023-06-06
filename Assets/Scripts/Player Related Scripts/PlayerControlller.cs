@@ -51,6 +51,9 @@ namespace YY_Games_Scripts
         [Header("Player Bow variables")]
         public BowController myBow;
 
+        [Header("Player Sword variables")]
+        public SwordControler mySword;
+
         [Header("Player class variables")]
         public bool isGunMan = false;
         public bool isBowMan = false;
@@ -307,11 +310,33 @@ namespace YY_Games_Scripts
                             firePoint.LookAt(camTrans.position + camTrans.forward * 50);
                         }
                         NockArrow();
-                        myBow.nockedArrow.transform.position = firePoint.position;
                     }
                     if (Input.GetMouseButtonUp(0))
                     {
                         LoseArrow();
+                    }
+                }
+                #endregion
+
+                #region SwordMan
+                if (isSwordMan)
+                {
+                    if (Input.GetMouseButton(0))
+                    {
+                        RaycastHit hit;
+
+                        if (Physics.Raycast(camTrans.position, camTrans.forward, out hit, 50))
+                        {
+                            if (Vector3.Distance(camTrans.position, hit.point) > 2)
+                            {
+                                firePoint.LookAt(hit.point);
+                            }
+                        }
+                        else
+                        {
+                            firePoint.LookAt(camTrans.position + camTrans.forward * 50);
+                        }
+                        SwingSword();
                     }
                 }
                 #endregion
@@ -334,6 +359,13 @@ namespace YY_Games_Scripts
 
                 firePoint = myBow.firePoint;
                 firePoint.position = myBow.firePoint.position;
+            }
+            if (isSwordMan)
+            {
+                mySword.gameObject.SetActive(true);
+
+                firePoint = mySword.firePoint;
+                firePoint.position = mySword.firePoint.position;
             }
         }
         #endregion
@@ -434,6 +466,12 @@ namespace YY_Games_Scripts
             myBow.nockedArrow = null;
         }
         #endregion
+        #region Function to Swing the Melee Weapons
+        public void SwingSword()
+        {
+            mySword.isSwinging = true;
+        }
+        #endregion
         #region Function to additional movement
         public void Bounce(float bounceForce)
         {
@@ -484,4 +522,4 @@ namespace YY_Games_Scripts
         }
         #endregion
     }
-    }
+}

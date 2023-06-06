@@ -61,7 +61,6 @@ namespace YY_Games_Scripts
             Instantiate(impactEffect, transform.position + transform.forward * -bulletSpeed * Time.deltaTime, transform.rotation);
         }
         #endregion
-
         #region Function to move the bullet
         public void MoveBullet()
         {

@@ -498,10 +498,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrow: {fileID: 7164315563285498034, guid: 95ff1cd6e0ced9d4aa19d1824fc6e44a, type: 3}
+  nockedArrow: {fileID: 0}
   firePoint: {fileID: 1467038122166371981}
   fireRate: 1
   zoomAmount: 20
-  gunName: Bow
+  weaponName: Bow
   fireCounter: 0
 --- !u!1 &5874602586161419595
 GameObject:
