@@ -213,16 +213,16 @@ namespace YY_Games_Scripts
                         if (isGunMan)
                         {
                             CamController.instance.ZoomIn(myGun.zoomAmount);
+                            weaponHolder.localPosition = Vector3.MoveTowards(weaponHolder.localPosition, weaponStartPos, zoomSpeed * Time.deltaTime);
                         }
 
                         if (isBowMan)
                         {
                             CamController.instance.ZoomIn(myBow.zoomAmount);
                         }
-                        weaponHolder.localPosition = Vector3.MoveTowards(weaponHolder.localPosition, weaponStartPos, zoomSpeed * Time.deltaTime);
                     }
 
-                    if (Input.GetMouseButton(1))
+                    if (Input.GetMouseButton(1) && isGunMan)
                     {
                         weaponHolder.position = Vector3.MoveTowards(weaponHolder.position, zoomPoint.position, zoomSpeed * Time.deltaTime);
                     }
@@ -305,7 +305,7 @@ namespace YY_Games_Scripts
                         }
                         else
                         {
-                            firePoint.LookAt(camTrans.position + camTrans.forward * 50);
+                            firePoint.LookAt(camTrans.position + camTrans.forward * 25);
                         }
                         NockArrow();
                     }
@@ -458,8 +458,10 @@ namespace YY_Games_Scripts
         {
             if(myBow.nockedArrow == null)
             {
-                myBow.nockedArrow = Instantiate(myBow.arrow, firePoint.position, firePoint.rotation);
-                myBow.isArrowNocked = true;
+                myBow.nockedArrow = Instantiate(myBow.arrow, myBow.nockPoint.position, myBow.nockPoint.rotation);
+                myBow.nockedArrow.transform.position = myBow.nockPoint.position;
+                myBow.nockedArrow.transform.rotation = myBow.nockPoint.rotation;
+                myBow.bowAnimation.Play();
             }
             myBow.fireCounter = myBow.fireRate;
         }
@@ -469,7 +471,6 @@ namespace YY_Games_Scripts
             {
                 myBow.nockedArrow.GetComponent<BulletController>().isLose = true;
             }
-            myBow.isArrowNocked = false;
             myBow.nockedArrow = null;
         }
         #endregion

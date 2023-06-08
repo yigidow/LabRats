@@ -19,6 +19,9 @@ namespace YY_Games_Scripts
         [Header("Variables for Damage Types")]
         public bool damageEnemy;
         public bool damagePlayer;
+
+        [Header("Variables for Animation ")]
+        public Animator arrowAnimator;
         #endregion
         #region Unity Functions
         void Update()
@@ -32,7 +35,7 @@ namespace YY_Games_Scripts
                 if (isLose)
                 {
                     MoveBullet();
-                }
+                }            
             }
 
             lifeTime -= Time.deltaTime;
@@ -48,7 +51,6 @@ namespace YY_Games_Scripts
             {
                 other.gameObject.GetComponent<EnemyHealth>().DamageEnemy(damage);
             }
-
             if (other.gameObject.tag == "EnemyHead" && damageEnemy)
             {
                 other.transform.parent.GetComponent<EnemyHealth>().DamageEnemy(damage * 2);

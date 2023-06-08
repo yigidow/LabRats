@@ -188,6 +188,7 @@ MonoBehaviour:
   isLose: 0
   damageEnemy: 1
   damagePlayer: 0
+  arrowAnimator: {fileID: 0}
 --- !u!82 &2307795820236585316
 AudioSource:
   m_ObjectHideFlags: 0
