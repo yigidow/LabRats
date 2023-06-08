@@ -356,7 +356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3120147920567551365}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.968, y: -0.206, z: 0.085}
+  m_LocalPosition: {x: -0.9716178, y: -0.20599991, z: 0.08733962}
   m_LocalScale: {x: 0.00098, y: 0.00098, z: 0.00098}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -411,8 +411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3387575496282046651}
   - component: {fileID: 3583396257235919934}
-  - component: {fileID: 4591762517326849845}
-  - component: {fileID: 2746119625183356907}
+  - component: {fileID: 1819751688591411400}
   m_Layer: 0
   m_Name: ShortSword
   m_TagString: Untagged
@@ -435,7 +434,7 @@ Transform:
   - {fileID: 6813473846024509209}
   - {fileID: 1621968034090396212}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -7.76, y: -2.1, z: -1.54}
 --- !u!114 &3583396257235919934
 MonoBehaviour:
@@ -451,61 +450,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1621968034090396212}
   attackSpeed: 10
-  swordHitBox: {fileID: 0}
   damage: 2
   isSwinging: 0
   attackSpeedCounter: 0
   damageEnemy: 1
   damagePlayer: 0
   weaponName: Sword
---- !u!135 &4591762517326849845
-SphereCollider:
+--- !u!111 &1819751688591411400
+Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5307030578578218041}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: -0.98, y: 0, z: 0.54}
---- !u!54 &2746119625183356907
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5307030578578218041}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Animation: {fileID: 7400000, guid: 7d3b21458bc7b584c9aff8c8971c23a6, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 7d3b21458bc7b584c9aff8c8971c23a6, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &6110601210452258668
 GameObject:
   m_ObjectHideFlags: 0

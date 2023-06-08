@@ -10,7 +10,6 @@ namespace YY_Games_Scripts
         [Header("Variables for Sword")]
         public Transform firePoint;
         public float attackSpeed;
-        public SphereCollider swordHitBox;
         public int damage = 2;
         public bool isSwinging = false;
         [HideInInspector] public double attackSpeedCounter;
@@ -35,22 +34,24 @@ namespace YY_Games_Scripts
             {
                 StartCoroutine(StopSwing());
             }
+
+            HitEnemy();
+   
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void HitEnemy()
         {
             if (isSwinging)
             {
-                if (other.gameObject.tag == "Enemy" && damageEnemy)
-                {
-                    other.gameObject.GetComponent<EnemyHealth>().DamageEnemy(damage);
-                    
-                    Debug.Log("Hit");
-                }
+                RaycastHit hit;
 
-                if (other.gameObject.tag == "Player" && damagePlayer)
+                if (Physics.SphereCast(firePoint.position, 1f, firePoint.forward, out hit, 0.5f))
                 {
-                    PlayerHealth.instance.DamagePayer(damage);
+                    if (hit.transform.tag == "Enemy" && damageEnemy)
+                    {
+                        hit.transform.gameObject.GetComponent<EnemyHealth>().DamageEnemy(damage);
+                        Debug.Log("hit");
+                    }
                 }
             }
         }
@@ -63,5 +64,12 @@ namespace YY_Games_Scripts
             isSwinging = false;
         }
         #endregion
+
+        //private void OnDrawGizmosSelected()
+        //{
+        //    Gizmos.color = Color.red;
+        //    Gizmos.DrawSphere(firePoint.position, 2f);
+        //    Gizmos.DrawWireSphere(firePoint.position, 2f);
+        //}
     }
 }
